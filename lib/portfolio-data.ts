@@ -4,7 +4,7 @@
  */
 
 export const profile = {
-  name: 'Cloud-Pulse',
+  name: 'Cloud-Pulses',
   roles: ['Infrastructure Monitoring', 'DevOps Dashboard'],
   tagline: 'Monitor infrastructure. Track deployments. Stay operational.',
   email: 'admin@cloudpulse.local',
