@@ -1,17 +1,11 @@
 pipeline {
     agent any
     
-    // 👇 ADD THIS TRIGGERS BLOCK HERE 👇
     triggers {
         githubPush()
     }
     
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/shakanishka16/Portfolio/tree/main'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t kanishka1603/portfolio:latest .'
