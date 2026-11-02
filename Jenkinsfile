@@ -9,25 +9,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/siddhesh12346/Portfolio.git'
+                git branch: 'main', url: 'https://github.com/shakanishka16/Portfolio/tree/main'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t siddheshk1234/portfolio:latest .'
+                sh 'docker build -t kanishka1603/portfolio:latest .'
             }
         }
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-credentials-id', variable: 'DOCKER_PASSWORD')]) {
-                    sh 'echo $DOCKER_PASSWORD | docker login -u "siddheshk1234" --password-stdin'
-                    sh 'docker push siddheshk1234/portfolio:latest'
+                    sh 'echo $DOCKER_PASSWORD | docker login -u "kanishka1603" --password-stdin'
+                    sh 'docker push kanishka1603/portfolio:latest'
                 }
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'minikube image load siddheshk1234/portfolio:latest'
+                sh 'minikube image load kanishka1603/portfolio:latest'
                 sh 'minikube kubectl -- apply -f k8s/'
                 sh 'minikube kubectl -- rollout restart deployment my-app-deployment'
             }
